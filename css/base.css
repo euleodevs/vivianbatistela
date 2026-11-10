@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Fontes Oficiais - Família Gandhi
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Gandhi Serif';
+  src: url('../assets/fonts/GandhiSerif-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gandhi Serif';
+  src: url('../assets/fonts/GandhiSerif-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gandhi Serif';
+  src: url('../assets/fonts/GandhiSerif-Bold.woff2') format('woff2'),
+       url('../assets/fonts/GandhiSerif-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gandhi Serif';
+  src: url('../assets/fonts/GandhiSerif-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gandhi Sans';
+  src: url('../assets/fonts/GandhiSans-Regular.woff2') format('woff2'),
+       url('../assets/fonts/GandhiSans-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gandhi Sans';
+  src: url('../assets/fonts/GandhiSans-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gandhi Sans';
+  src: url('../assets/fonts/GandhiSans-Bold.woff2') format('woff2'),
+       url('../assets/fonts/GandhiSans-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Bloqueio definitivo de rolagem quando o menu mobile está aberto */
+html.menu-travado {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--fonte-sans);
+  font-size: var(--tamanho-base);
+  line-height: 1.65;
+  color: var(--cor-texto);
+  background-color: var(--cor-branco);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img, picture, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transicao-suave);
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Tipografia Base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-serif);
+  color: var(--cor-azul);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--tamanho-hero);
+  margin-bottom: 1.25rem;
+}
+
+h2 {
+  font-size: var(--tamanho-2xl);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: var(--tamanho-xl);
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul, ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Acessibilidade - Focus visível */
+:focus-visible {
+  outline: 2px solid var(--cor-dourado);
+  outline-offset: 3px;
+}
+
+/* Redução de Movimento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* Seções */
+.secao {
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+}
+
+.secao-gelo {
+  background-color: var(--cor-gelo);
+}
+
+.secao-azul {
+  background-color: var(--cor-azul);
+  color: var(--cor-branco);
+}
+
+.secao-azul h1, .secao-azul h2, .secao-azul h3 {
+  color: var(--cor-branco);
+}
+
+/* Cabeçalho de Seção */
+.secao-header {
+  text-align: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3.5rem;
+}
+
+.secao-tag {
+  display: inline-block;
+  font-size: var(--tamanho-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--cor-dourado-escuro);
+  margin-bottom: 0.75rem;
+}
+
+.secao-azul .secao-tag {
+  color: var(--cor-dourado);
+}
+
+.secao-linha {
+  width: 60px;
+  height: 2px;
+  background: var(--gradiente-dourado);
+  margin: 1rem auto 1.25rem;
+  border-radius: var(--raio-pill);
+}
+
