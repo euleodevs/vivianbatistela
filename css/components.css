@@ -214,6 +214,31 @@
   flex: 0 0 auto;
 }
 
+.office-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.office-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--cor-texto-suave);
+  font-size: var(--tamanho-xs);
+  line-height: 1.6;
+}
+
+.office-contact-item .icon-sidebar {
+  flex: 0 0 19px;
+  margin: 0.15rem 0 0;
+}
+
+.office-contact-item span {
+  min-width: 0;
+}
+
 .horario-atendimento {
   font-size: var(--tamanho-sm);
   line-height: 1.7;
@@ -388,6 +413,177 @@
 }
 
 /* --------------------------------------------------------------------------
+   Especialidades em duas colunas e cards expansíveis
+   -------------------------------------------------------------------------- */
+.especialidades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.especialidade-col {
+  min-width: 0;
+}
+
+.especialidade-heading {
+  margin-bottom: 1.25rem;
+}
+
+.especialidade-heading .secao-tag {
+  margin-bottom: 0.65rem;
+}
+
+.especialidade-heading h3 {
+  color: var(--cor-azul);
+  font-family: var(--fonte-serif);
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  line-height: 1.2;
+}
+
+.servicos-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.card-servico-expandivel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-servico-expandivel:hover {
+  transform: none;
+  border-color: rgba(185, 132, 76, 0.6);
+  box-shadow: 0 12px 28px rgba(37, 54, 80, 0.1);
+}
+
+.card-servico-summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "badge chevron"
+    "title chevron"
+    "preview chevron";
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  padding: 1.25rem 1.35rem;
+  cursor: pointer;
+  list-style: none;
+  min-height: 92px;
+}
+
+.card-servico-summary::-webkit-details-marker {
+  display: none;
+}
+
+.card-servico-summary::marker {
+  content: "";
+}
+
+.card-servico-summary:focus-visible {
+  outline: 3px solid rgba(220, 163, 102, 0.65);
+  outline-offset: -3px;
+}
+
+.card-servico-summary .card-servico-badge {
+  grid-area: badge;
+  justify-self: start;
+  margin: 0;
+}
+
+.card-servico-title {
+  grid-area: title;
+  color: var(--cor-azul);
+  font-size: var(--tamanho-lg);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.card-servico-preview {
+  grid-area: preview;
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--cor-texto-suave);
+  font-size: var(--tamanho-sm);
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-servico-chevron {
+  grid-area: chevron;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--cor-dourado);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--cor-dourado-escuro);
+  line-height: 1;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.card-servico-chevron svg {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+}
+
+.card-servico-expandivel[open] .card-servico-chevron {
+  background-color: var(--cor-dourado);
+  color: var(--cor-branco);
+  border-color: var(--cor-dourado);
+}
+
+.card-servico-expandivel[open] .card-servico-chevron svg {
+  transform: rotate(180deg);
+}
+
+.card-servico-details {
+  padding: 0 1.35rem 1.35rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.card-servico-details p {
+  margin: 1rem 0 1.15rem;
+  color: var(--cor-texto-suave);
+  font-size: var(--tamanho-sm);
+  line-height: 1.65;
+}
+
+.card-servico-details .card-servico-link {
+  margin: 0;
+}
+
+.legacy-areas {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .especialidades-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .card-servico-summary {
+    padding: 1.1rem 1rem;
+  }
+
+  .card-servico-preview {
+    font-size: var(--tamanho-xs);
+  }
+
+  .card-servico-details {
+    padding: 0 1rem 1.1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
    FAQ Accordion (<details> / <summary>)
    -------------------------------------------------------------------------- */
 .faq-lista {
@@ -546,6 +742,11 @@
   font-size: var(--tamanho-lg);
   margin-bottom: 1.25rem;
   letter-spacing: 0.02em;
+}
+
+.site-footer .footer-col > h3 {
+  color: var(--cor-dourado-claro);
+  -webkit-text-fill-color: var(--cor-dourado-claro);
 }
 
 .footer-logo {

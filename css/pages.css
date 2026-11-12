@@ -13,9 +13,10 @@
   min-height: calc(100svh - 74px);
   display: flex;
   align-items: center;
-  padding-top: clamp(2.5rem, 4vw, 4rem);
-  padding-bottom: clamp(2.5rem, 4vw, 4rem);
-  overflow: hidden;
+  height: auto;
+  padding-top: clamp(2rem, 4vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 4rem);
+  overflow: visible;
   border-bottom: 2px solid var(--cor-dourado);
 }
 
@@ -46,9 +47,9 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.25fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
   align-items: center;
-  gap: 3.5rem;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
 }
 
 .hero-visual {
@@ -91,10 +92,31 @@
 
 .hero-title {
   color: var(--cor-branco);
-  font-size: var(--tamanho-hero);
+  font-size: clamp(2.25rem, 4vw, 3rem);
   line-height: 1.15;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   font-weight: 700;
+}
+
+.hero-identity {
+  color: var(--cor-dourado-claro);
+  font-family: var(--fonte-serif);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.15rem;
+}
+
+.hero-identity > span:first-child {
+  background: var(--gradiente-dourado);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-identity-oab {
+  color: var(--cor-dourado-claro);
+  -webkit-text-fill-color: var(--cor-dourado-claro);
 }
 
 .hero-title span {
@@ -103,12 +125,45 @@
   -webkit-text-fill-color: transparent;
 }
 
+@media (min-width: 993px) {
+  .hero-title {
+    white-space: nowrap;
+  }
+}
+
 .hero-subtitle {
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   line-height: 1.65;
   color: #D6DCE5;
-  margin-bottom: 2.25rem;
-  max-width: 580px;
+  margin-bottom: 1.25rem;
+  max-width: 660px;
+}
+
+.hero-attendance {
+  color: var(--cor-branco);
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-attendance-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-dourado);
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 1.35rem;
+}
+
+.hero-attendance-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .hero-credenciais {
@@ -166,10 +221,10 @@
 
 .hero-themis {
   display: block;
-  width: 303px;
+  width: min(100%, 303px);
   height: auto;
   aspect-ratio: 892 / 1763;
-  max-height: none;
+  max-height: min(72svh, 620px);
   object-fit: contain;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
 }
@@ -207,19 +262,24 @@
 
 @media (max-width: 992px) {
   .hero-home {
-    /* Mantém o hero preenchendo a área visível do celular sem cortar conteúdo. */
-    min-height: calc(100vh - 74px);
     min-height: calc(100svh - 74px);
+    padding-top: clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
   }
 
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     text-align: center;
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 
   .hero-title {
-    font-size: clamp(1.875rem, 7.7vw, 2rem);
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+  }
+
+  .hero-identity {
+    font-size: clamp(1.05rem, 4vw, 1.25rem);
+    margin-bottom: 0.9rem;
   }
 
   .hero-content {
@@ -234,52 +294,17 @@
   .hero-subtitle {
     margin-left: auto;
     margin-right: auto;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
   }
 
-  .hero-credenciais {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.5rem;
-    width: 100%;
-    max-width: 360px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* No mobile, prioriza OAB/SP, experiência e comarca em três colunas. */
-  .hero-credenciais .credencial-item:nth-child(2) {
-    display: none;
-  }
-
-  .hero-credenciais .credencial-item {
-    align-items: center;
-    min-width: 0;
-    text-align: center;
-  }
-
-  .hero-credenciais .credencial-comarca {
-    display: flex;
-  }
-
-  .hero-credenciais .credencial-legenda-desktop {
-    display: none;
-  }
-
-  .hero-credenciais .credencial-legenda-mobile {
-    display: block;
-  }
-
-  .hero-credenciais .credencial-destaque {
-    font-size: 1.125rem;
-    line-height: 1.15;
-    white-space: nowrap;
-  }
-
-  .hero-credenciais .credencial-legenda {
-    font-size: 0.58rem;
-    line-height: 1.2;
-    letter-spacing: 0;
-    white-space: nowrap;
+  .hero-attendance {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.06em;
+    justify-content: center;
   }
 
   .hero-ctas {
@@ -296,7 +321,7 @@
   }
 
   .hero-themis {
-    width: min(100%, 213px);
+    width: min(100%, 165px);
     height: auto;
     max-height: none;
     filter: none;
@@ -318,9 +343,50 @@
     background-position: center, center;
     background-size: cover, cover;
     background-repeat: no-repeat, no-repeat;
-    contain: paint;
+    contain: layout;
   }
 
+}
+
+@media (max-height: 760px) and (min-width: 993px) {
+  .hero-home {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-themis {
+    width: min(100%, 230px);
+    max-height: 58svh;
+  }
+
+  .hero-attendance {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 992px) {
+  .hero-home {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .hero-grid {
+    gap: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.65rem, 7vw, 2rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .hero-themis {
+    width: min(100%, 155px);
+    max-height: none;
+  }
 }
 
 @media (max-width: 375px) {
@@ -389,6 +455,48 @@
   }
 }
 
+.curriculo {
+  margin-top: 0;
+}
+
+.curriculo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.curriculo-grid > div {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-md);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-card);
+}
+
+.curriculo-grid h3 {
+  color: var(--cor-azul);
+  font-size: var(--tamanho-lg);
+  margin-bottom: 1rem;
+}
+
+.curriculo-lista {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--cor-texto-suave);
+}
+
+.curriculo-lista li {
+  margin-bottom: 0.75rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 700px) {
+  .curriculo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Seção Como Funciona o Atendimento
    -------------------------------------------------------------------------- */
@@ -441,21 +549,15 @@
 .servico-hero {
   background: var(--gradiente-hero-azul);
   color: var(--cor-branco);
-  padding: 3.5rem 0 4rem;
+  padding: clamp(2rem, 5vw, 3rem) 0 clamp(2.25rem, 5vw, 3.25rem);
   border-bottom: 2px solid var(--cor-dourado);
 }
 
 .servico-hero h1 {
   color: var(--cor-branco);
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  margin-bottom: 1.25rem;
-}
-
-.servico-hero p {
-  color: #D6DCE5;
-  font-size: var(--tamanho-md);
-  max-width: 780px;
-  line-height: 1.7;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  margin-bottom: 0;
 }
 
 .breadcrumb {
@@ -488,9 +590,15 @@
 }
 
 .servico-conteudo h2 {
-  margin-top: 2.5rem;
+  margin-top: 0;
   margin-bottom: 1.25rem;
   font-size: var(--tamanho-xl);
+}
+
+.servico-resumo {
+  max-width: 70ch;
+  font-size: var(--tamanho-md);
+  line-height: 1.8;
 }
 
 .servico-conteudo ul {
@@ -542,6 +650,15 @@
 }
 
 @media (max-width: 900px) {
+  .servico-hero {
+    padding-top: 1.75rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .servico-hero h1 {
+    font-size: clamp(1.65rem, 7vw, 2rem);
+  }
+
   .servico-layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;

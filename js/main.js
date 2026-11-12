@@ -198,7 +198,171 @@
     }, { passive: true });
   }
 
-  // 3. Suporte acessível a detalhes de FAQ
+  // 3. Cards de serviços: expansão suave e apenas um aberto por vez
+  const serviceCards = [...document.querySelectorAll('.card-servico-expandivel')];
+  const serviceAnimationDuration = 240;
+  const serviceAnimationEasing = 'cubic-bezier(0.22, 1, 0.36, 1)';
+  let serviceTransitioning = false;
+
+  const servicePrefersReducedMotion = () => (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+
+  const clearServiceAnimationStyles = details => {
+    details.style.removeProperty('height');
+    details.style.removeProperty('overflow');
+    details.style.removeProperty('opacity');
+    details.style.removeProperty('padding-top');
+    details.style.removeProperty('padding-bottom');
+    details.style.removeProperty('transition');
+  };
+
+  const waitForServiceTransition = (details, duration) => new Promise(resolve => {
+    if (!duration) {
+      resolve();
+      return;
+    }
+
+    let finished = false;
+    let timeoutId;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      details.removeEventListener('transitionend', handleTransitionEnd);
+      window.clearTimeout(timeoutId);
+      resolve();
+    };
+    const handleTransitionEnd = event => {
+      if (event.target === details && event.propertyName === 'height') finish();
+    };
+
+    details.addEventListener('transitionend', handleTransitionEnd);
+    timeoutId = window.setTimeout(finish, duration + 80);
+  });
+
+  const animateServiceOpen = card => {
+    const details = card.querySelector('.card-servico-details');
+    const summary = card.querySelector('.card-servico-summary');
+    if (!details || !summary) return Promise.resolve();
+
+    const duration = servicePrefersReducedMotion() ? 0 : serviceAnimationDuration;
+    const computedStyle = window.getComputedStyle(details);
+    const paddingTop = computedStyle.paddingTop;
+    const paddingBottom = computedStyle.paddingBottom;
+
+    card.open = true;
+    summary.setAttribute('aria-expanded', 'true');
+    details.style.height = 'auto';
+    details.style.paddingTop = paddingTop;
+    details.style.paddingBottom = paddingBottom;
+    const targetHeight = details.offsetHeight;
+
+    details.style.overflow = 'hidden';
+    details.style.height = '0px';
+    details.style.opacity = '0';
+    details.style.paddingTop = '0px';
+    details.style.paddingBottom = '0px';
+    details.style.transition = duration
+      ? `height ${duration}ms ${serviceAnimationEasing}, opacity ${duration}ms ease, padding-top ${duration}ms ${serviceAnimationEasing}, padding-bottom ${duration}ms ${serviceAnimationEasing}`
+      : 'none';
+
+    void details.offsetHeight;
+
+    if (!duration) {
+      clearServiceAnimationStyles(details);
+      return Promise.resolve();
+    }
+
+    window.requestAnimationFrame(() => {
+      details.style.height = `${targetHeight}px`;
+      details.style.opacity = '1';
+      details.style.paddingTop = paddingTop;
+      details.style.paddingBottom = paddingBottom;
+    });
+
+    return waitForServiceTransition(details, duration).then(() => {
+      clearServiceAnimationStyles(details);
+    });
+  };
+
+  const animateServiceClose = card => {
+    const details = card.querySelector('.card-servico-details');
+    const summary = card.querySelector('.card-servico-summary');
+    if (!details || !summary) return Promise.resolve();
+
+    const duration = servicePrefersReducedMotion() ? 0 : serviceAnimationDuration;
+    const computedStyle = window.getComputedStyle(details);
+    const paddingTop = computedStyle.paddingTop;
+    const paddingBottom = computedStyle.paddingBottom;
+    const currentHeight = details.offsetHeight;
+
+    details.style.overflow = 'hidden';
+    details.style.height = `${currentHeight}px`;
+    details.style.opacity = '1';
+    details.style.paddingTop = paddingTop;
+    details.style.paddingBottom = paddingBottom;
+    details.style.transition = duration
+      ? `height ${duration}ms ${serviceAnimationEasing}, opacity ${duration}ms ease, padding-top ${duration}ms ${serviceAnimationEasing}, padding-bottom ${duration}ms ${serviceAnimationEasing}`
+      : 'none';
+
+    void details.offsetHeight;
+
+    if (!duration) {
+      card.open = false;
+      summary.setAttribute('aria-expanded', 'false');
+      clearServiceAnimationStyles(details);
+      return Promise.resolve();
+    }
+
+    window.requestAnimationFrame(() => {
+      details.style.height = '0px';
+      details.style.opacity = '0';
+      details.style.paddingTop = '0px';
+      details.style.paddingBottom = '0px';
+    });
+
+    return waitForServiceTransition(details, duration).then(() => {
+      card.open = false;
+      summary.setAttribute('aria-expanded', 'false');
+      clearServiceAnimationStyles(details);
+    });
+  };
+
+  const toggleServiceCard = async card => {
+    if (serviceTransitioning) return;
+    serviceTransitioning = true;
+
+    try {
+      if (card.open) {
+        await animateServiceClose(card);
+        return;
+      }
+
+      const otherOpenCards = serviceCards.filter(otherCard => (
+        otherCard !== card && otherCard.open
+      ));
+
+      await Promise.all([
+        animateServiceOpen(card),
+        ...otherOpenCards.map(animateServiceClose),
+      ]);
+    } finally {
+      serviceTransitioning = false;
+    }
+  };
+
+  serviceCards.forEach(card => {
+    const summary = card.querySelector('.card-servico-summary');
+    if (!summary) return;
+
+    summary.setAttribute('aria-expanded', card.open ? 'true' : 'false');
+    summary.addEventListener('click', event => {
+      event.preventDefault();
+      toggleServiceCard(card);
+    });
+  });
+
+  // 4. Suporte acessível a detalhes de FAQ
   const faqs = [...document.querySelectorAll('.faq-item')];
   const faqAnimationDuration = 300;
   const faqAnimationEasing = 'cubic-bezier(0.25, 1, 0.5, 1)';
@@ -358,7 +522,7 @@
     });
   });
 
-  // 4. Controle de visibilidade do WhatsApp flutuante
+  // 5. Controle de visibilidade do WhatsApp flutuante
   const wppFloat = document.querySelector('.whatsapp-float');
   const heroSection = document.querySelector('.hero-home') || document.querySelector('.servico-hero');
   if (wppFloat) {

@@ -1,0 +1,8 @@
+.wrangler/
+node_modules/
+.env
+.env.*
+!.env.example
+.dev.vars*
+cloudflare-pages-output/
+assets/LEIA-ME.md
