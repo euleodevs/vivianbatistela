@@ -20,7 +20,6 @@
 - [Sobre a advogada](https://www.vivianbatistela.com.br/sobre/): trajetória, formação e experiência desde 2000.
 - [Áreas de atuação](https://www.vivianbatistela.com.br/areas-de-atuacao/): lista dos serviços jurídicos oferecidos.
 - [Contato e atendimento](https://www.vivianbatistela.com.br/contato/): canais oficiais, endereço e modalidades.
-- [Perguntas frequentes](https://www.vivianbatistela.com.br/perguntas-frequentes/): dúvidas gerais sobre atendimento e serviços.
 - [Política de Privacidade](https://www.vivianbatistela.com.br/politica-de-privacidade/): informações sobre privacidade e ausência de analytics no site.
 
 ## Serviços jurídicos

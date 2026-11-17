@@ -8,9 +8,13 @@
 .hero-home {
   position: relative;
   background: var(--gradiente-hero-azul);
+  background-image: url('../assets/images/banner.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--cor-branco);
-  min-height: calc(100vh - 74px);
-  min-height: calc(100svh - 74px);
+  min-height: calc(100vh - 82px);
+  min-height: calc(100svh - 82px);
   display: flex;
   align-items: center;
   height: auto;
@@ -20,21 +24,17 @@
   border-bottom: 2px solid var(--cor-dourado);
 }
 
-/* Camada sutil com grafismo oficial em marca d'água */
+/* Overlay de contraste sobre a imagem do banner */
 .hero-home::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../assets/images/grafismo-01-1280.jpg');
-  background-image: image-set(
-    url('../assets/images/grafismo-01-1280.webp') type('image/webp'),
-    url('../assets/images/grafismo-01-1280.jpg') type('image/jpeg')
+  background: linear-gradient(
+    90deg,
+    rgba(18, 29, 44, 0.94) 0%,
+    rgba(18, 29, 44, 0.86) 40%,
+    rgba(18, 29, 44, 0.34) 100%
   );
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.14;
-  mix-blend-mode: luminosity;
   pointer-events: none;
   z-index: 0;
 }
@@ -47,30 +47,36 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: clamp(1.5rem, 3.5vw, 3.5rem);
-}
-
-.hero-visual {
-  order: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  min-width: 0;
-  z-index: 1;
-}
-
-.hero-visual picture {
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }
 
 .hero-content {
-  order: 2;
   z-index: 2;
+  position: relative;
+  min-width: 0;
+  width: min(100%, 600px);
+  padding: clamp(1.15rem, 2.4vw, 2rem);
+  border: 1px solid rgba(245, 221, 196, 0.92);
+  border-radius: var(--raio-sm);
+  box-shadow: 0 0 20px rgba(220, 163, 102, 0.28), inset 0 0 18px rgba(220, 163, 102, 0.06);
+}
+
+.hero-content::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  right: 1.25rem;
+  width: 6rem;
+  height: 1.5rem;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 8px,
+    rgba(245, 221, 196, 0.9) 8px 9px,
+    transparent 9px 17px
+  );
+  opacity: 0.72;
+  pointer-events: none;
 }
 
 .hero-tag {
@@ -92,9 +98,9 @@
 
 .hero-title {
   color: var(--cor-branco);
-  font-size: clamp(2.25rem, 4vw, 3rem);
-  line-height: 1.15;
-  margin-bottom: 0.85rem;
+  font-size: clamp(2rem, 3.35vw, 2.65rem);
+  line-height: 1.18;
+  margin-bottom: 0.75rem;
   font-weight: 700;
 }
 
@@ -127,16 +133,30 @@
 
 @media (min-width: 993px) {
   .hero-title {
-    white-space: nowrap;
+    white-space: normal;
   }
 }
 
 .hero-subtitle {
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   line-height: 1.65;
-  color: #D6DCE5;
-  margin-bottom: 1.25rem;
+  color: var(--cor-branco);
+  margin-bottom: 0.85rem;
   max-width: 660px;
+}
+
+.hero-highlight {
+  color: var(--cor-dourado-claro);
+  font-family: var(--fonte-serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1.15rem;
+  text-shadow: 0 0 12px rgba(220, 163, 102, 0.24);
+}
+
+.hero-highlight strong {
+  font-weight: 700;
 }
 
 .hero-attendance {
@@ -205,35 +225,9 @@
   gap: 1rem;
 }
 
-/* Imagem da Deusa da Justiça no Hero */
-
-.hero-visual-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 440px;
-  height: 440px;
-  background: radial-gradient(circle, rgba(220, 163, 102, 0.15) 0%, rgba(37, 54, 80, 0) 70%);
-  border-radius: 50%;
-  z-index: -1;
-}
-
-.hero-themis {
-  display: block;
-  width: min(100%, 303px);
-  height: auto;
-  aspect-ratio: 892 / 1763;
-  max-height: min(72svh, 620px);
-  object-fit: contain;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
-}
-
 /* Entrada leve sem JavaScript pesado. */
 .hero-animado .hero-content > *,
-.hero-animado .hero-themis,
-.hero-animado-mobile .hero-content > *,
-.hero-animado-mobile .hero-themis {
+.hero-animado-mobile .hero-content > * {
   animation: hero-fade-up 0.65s ease-out both;
 }
 
@@ -243,9 +237,8 @@
 .hero-animado-mobile .hero-content > *:nth-child(3) { animation-delay: 0.16s; }
 .hero-animado .hero-content > *:nth-child(4),
 .hero-animado-mobile .hero-content > *:nth-child(4) { animation-delay: 0.24s; }
-.hero-animado .hero-themis,
-.hero-animado-mobile .hero-themis { animation-delay: 0.12s; }
-
+.hero-animado .hero-content > *:nth-child(5),
+.hero-animado-mobile .hero-content > *:nth-child(5) { animation-delay: 0.32s; }
 @keyframes hero-fade-up {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -253,16 +246,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-animado .hero-content > *,
-  .hero-animado .hero-themis,
-  .hero-animado-mobile .hero-content > *,
-  .hero-animado-mobile .hero-themis {
+  .hero-animado-mobile .hero-content > * {
     animation: none;
   }
 }
 
 @media (max-width: 992px) {
   .hero-home {
-    min-height: calc(100svh - 74px);
+    min-height: calc(100svh - 82px);
     padding-top: clamp(1.5rem, 5vw, 2.5rem);
     padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
   }
@@ -283,12 +274,8 @@
   }
 
   .hero-content {
-    order: 1;
     min-width: 0;
-  }
-
-  .hero-visual {
-    order: 2;
+    padding: 1.25rem 1rem;
   }
 
   .hero-subtitle {
@@ -296,6 +283,12 @@
     margin-right: auto;
     font-size: 1rem;
     line-height: 1.55;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-highlight {
+    font-size: clamp(1.1rem, 5vw, 1.35rem);
+    line-height: 1.4;
     margin-bottom: 1rem;
   }
 
@@ -320,30 +313,23 @@
     justify-content: center;
   }
 
-  .hero-themis {
-    width: min(100%, 165px);
-    height: auto;
-    max-height: none;
-    filter: none;
-  }
-
-  /* No mobile, o grafismo usa uma camada de fundo estática, sem blend-mode,
-     para permanecer visível sem reintroduzir tiles brancas durante o scroll. */
   .hero-home::before {
-    display: none;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 29, 44, 0.84) 0%,
+      rgba(18, 29, 44, 0.80) 55%,
+      rgba(18, 29, 44, 0.74) 100%
+    );
   }
 
   .hero-home {
-    background-image:
-      linear-gradient(
-        rgba(27, 40, 59, 0.86) 0%,
-        rgba(37, 54, 80, 0.86) 100%
-      ),
-      url('../assets/images/grafismo-01-1280.jpg');
-    background-position: center, center;
-    background-size: cover, cover;
-    background-repeat: no-repeat, no-repeat;
+    background-position: 62% center;
     contain: layout;
+  }
+
+  .hero-content {
+    margin-right: auto;
+    margin-left: auto;
   }
 
 }
@@ -352,11 +338,6 @@
   .hero-home {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  }
-
-  .hero-themis {
-    width: min(100%, 230px);
-    max-height: 58svh;
   }
 
   .hero-attendance {
@@ -383,10 +364,6 @@
     line-height: 1.45;
   }
 
-  .hero-themis {
-    width: min(100%, 155px);
-    max-height: none;
-  }
 }
 
 @media (max-width: 375px) {
@@ -495,52 +472,6 @@
   .curriculo-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* --------------------------------------------------------------------------
-   Seção Como Funciona o Atendimento
-   -------------------------------------------------------------------------- */
-.grid-etapas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-.card-etapa {
-  background-color: var(--cor-branco);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-md);
-  padding: 2.25rem 1.75rem;
-  position: relative;
-  box-shadow: var(--sombra-card);
-  transition: var(--transicao-suave);
-}
-
-.card-etapa:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(37, 54, 80, 0.12);
-  border-color: rgba(37, 54, 80, 0.18);
-}
-
-.etapa-num {
-  font-family: var(--fonte-serif);
-  font-size: var(--tamanho-2xl);
-  font-weight: 700;
-  color: var(--cor-dourado-escuro);
-  margin-bottom: 0.75rem;
-  line-height: 1;
-}
-
-.card-etapa h3 {
-  font-size: var(--tamanho-md);
-  color: var(--cor-azul);
-  margin-bottom: 0.75rem;
-}
-
-.card-etapa p {
-  font-size: var(--tamanho-sm);
-  color: var(--cor-texto-suave);
-  line-height: 1.6;
 }
 
 /* --------------------------------------------------------------------------

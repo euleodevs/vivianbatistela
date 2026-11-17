@@ -200,155 +200,45 @@
 
   // 3. Cards de serviços: expansão suave e apenas um aberto por vez
   const serviceCards = [...document.querySelectorAll('.card-servico-expandivel')];
-  const serviceAnimationDuration = 240;
-  const serviceAnimationEasing = 'cubic-bezier(0.22, 1, 0.36, 1)';
-  let serviceTransitioning = false;
+  const serviceAnimationTokens = new WeakMap();
 
   const servicePrefersReducedMotion = () => (
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
 
-  const clearServiceAnimationStyles = details => {
-    details.style.removeProperty('height');
-    details.style.removeProperty('overflow');
-    details.style.removeProperty('opacity');
-    details.style.removeProperty('padding-top');
-    details.style.removeProperty('padding-bottom');
-    details.style.removeProperty('transition');
+  const setServiceCardOpen = (card, isOpen) => {
+    const summary = card.querySelector('.card-servico-summary');
+    if (!summary) return;
+
+    const token = (serviceAnimationTokens.get(card) || 0) + 1;
+    serviceAnimationTokens.set(card, token);
+    card.classList.remove('is-entering');
+    card.open = isOpen;
+    summary.setAttribute('aria-expanded', String(isOpen));
+
+    if (!isOpen || !card.querySelector('.card-servico-details') || servicePrefersReducedMotion()) return;
+
+    card.classList.add('is-entering');
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        if (serviceAnimationTokens.get(card) === token && card.open) {
+          card.classList.remove('is-entering');
+        }
+      });
+    });
   };
 
-  const waitForServiceTransition = (details, duration) => new Promise(resolve => {
-    if (!duration) {
-      resolve();
+  const toggleServiceCard = card => {
+    if (card.open) {
+      setServiceCardOpen(card, false);
       return;
     }
 
-    let finished = false;
-    let timeoutId;
-    const finish = () => {
-      if (finished) return;
-      finished = true;
-      details.removeEventListener('transitionend', handleTransitionEnd);
-      window.clearTimeout(timeoutId);
-      resolve();
-    };
-    const handleTransitionEnd = event => {
-      if (event.target === details && event.propertyName === 'height') finish();
-    };
-
-    details.addEventListener('transitionend', handleTransitionEnd);
-    timeoutId = window.setTimeout(finish, duration + 80);
-  });
-
-  const animateServiceOpen = card => {
-    const details = card.querySelector('.card-servico-details');
-    const summary = card.querySelector('.card-servico-summary');
-    if (!details || !summary) return Promise.resolve();
-
-    const duration = servicePrefersReducedMotion() ? 0 : serviceAnimationDuration;
-    const computedStyle = window.getComputedStyle(details);
-    const paddingTop = computedStyle.paddingTop;
-    const paddingBottom = computedStyle.paddingBottom;
-
-    card.open = true;
-    summary.setAttribute('aria-expanded', 'true');
-    details.style.height = 'auto';
-    details.style.paddingTop = paddingTop;
-    details.style.paddingBottom = paddingBottom;
-    const targetHeight = details.offsetHeight;
-
-    details.style.overflow = 'hidden';
-    details.style.height = '0px';
-    details.style.opacity = '0';
-    details.style.paddingTop = '0px';
-    details.style.paddingBottom = '0px';
-    details.style.transition = duration
-      ? `height ${duration}ms ${serviceAnimationEasing}, opacity ${duration}ms ease, padding-top ${duration}ms ${serviceAnimationEasing}, padding-bottom ${duration}ms ${serviceAnimationEasing}`
-      : 'none';
-
-    void details.offsetHeight;
-
-    if (!duration) {
-      clearServiceAnimationStyles(details);
-      return Promise.resolve();
-    }
-
-    window.requestAnimationFrame(() => {
-      details.style.height = `${targetHeight}px`;
-      details.style.opacity = '1';
-      details.style.paddingTop = paddingTop;
-      details.style.paddingBottom = paddingBottom;
+    serviceCards.forEach(otherCard => {
+      if (otherCard.open) setServiceCardOpen(otherCard, false);
     });
 
-    return waitForServiceTransition(details, duration).then(() => {
-      clearServiceAnimationStyles(details);
-    });
-  };
-
-  const animateServiceClose = card => {
-    const details = card.querySelector('.card-servico-details');
-    const summary = card.querySelector('.card-servico-summary');
-    if (!details || !summary) return Promise.resolve();
-
-    const duration = servicePrefersReducedMotion() ? 0 : serviceAnimationDuration;
-    const computedStyle = window.getComputedStyle(details);
-    const paddingTop = computedStyle.paddingTop;
-    const paddingBottom = computedStyle.paddingBottom;
-    const currentHeight = details.offsetHeight;
-
-    details.style.overflow = 'hidden';
-    details.style.height = `${currentHeight}px`;
-    details.style.opacity = '1';
-    details.style.paddingTop = paddingTop;
-    details.style.paddingBottom = paddingBottom;
-    details.style.transition = duration
-      ? `height ${duration}ms ${serviceAnimationEasing}, opacity ${duration}ms ease, padding-top ${duration}ms ${serviceAnimationEasing}, padding-bottom ${duration}ms ${serviceAnimationEasing}`
-      : 'none';
-
-    void details.offsetHeight;
-
-    if (!duration) {
-      card.open = false;
-      summary.setAttribute('aria-expanded', 'false');
-      clearServiceAnimationStyles(details);
-      return Promise.resolve();
-    }
-
-    window.requestAnimationFrame(() => {
-      details.style.height = '0px';
-      details.style.opacity = '0';
-      details.style.paddingTop = '0px';
-      details.style.paddingBottom = '0px';
-    });
-
-    return waitForServiceTransition(details, duration).then(() => {
-      card.open = false;
-      summary.setAttribute('aria-expanded', 'false');
-      clearServiceAnimationStyles(details);
-    });
-  };
-
-  const toggleServiceCard = async card => {
-    if (serviceTransitioning) return;
-    serviceTransitioning = true;
-
-    try {
-      if (card.open) {
-        await animateServiceClose(card);
-        return;
-      }
-
-      const otherOpenCards = serviceCards.filter(otherCard => (
-        otherCard !== card && otherCard.open
-      ));
-
-      await Promise.all([
-        animateServiceOpen(card),
-        ...otherOpenCards.map(animateServiceClose),
-      ]);
-    } finally {
-      serviceTransitioning = false;
-    }
+    setServiceCardOpen(card, true);
   };
 
   serviceCards.forEach(card => {

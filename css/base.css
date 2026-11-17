@@ -96,6 +96,30 @@ body {
   flex-direction: column;
 }
 
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.75rem 1rem;
+  color: var(--cor-branco);
+  background: var(--cor-azul-profundo);
+  border: 2px solid var(--cor-dourado);
+  border-radius: var(--raio-sm);
+  box-shadow: var(--sombra-card);
+  transform: translateY(calc(-100% - 1.25rem));
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: 3px;
+}
+
+main#main-content {
+  scroll-margin-top: 6rem;
+}
+
 img, picture, svg {
   display: block;
   max-width: 100%;
