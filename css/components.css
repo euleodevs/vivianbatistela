@@ -226,7 +226,7 @@
   align-items: flex-start;
   gap: 0.65rem;
   color: var(--cor-texto-suave);
-  font-size: var(--tamanho-xs);
+  font-size: var(--tamanho-md);
   line-height: 1.6;
 }
 
@@ -240,7 +240,7 @@
 }
 
 .horario-atendimento {
-  font-size: var(--tamanho-sm);
+  font-size: var(--tamanho-md);
   line-height: 1.7;
   color: var(--cor-texto-suave);
   margin: -0.5rem 0 1.25rem;
@@ -371,7 +371,7 @@
 
 .card-servico p {
   color: var(--cor-texto-suave);
-  font-size: var(--tamanho-sm);
+  font-size: var(--tamanho-md);
   line-height: 1.6;
   margin-bottom: 1.5rem;
   flex-grow: 1;
@@ -698,7 +698,7 @@
   overflow: hidden;
   padding: 0 1.5rem 1.5rem 1.5rem;
   color: var(--cor-texto-suave);
-  font-size: var(--tamanho-sm);
+  font-size: var(--tamanho-md);
   line-height: 1.65;
   border-top: 1px solid rgba(37, 54, 80, 0.06);
   padding-top: 1rem;

@@ -87,7 +87,7 @@ html.menu-travado {
 
 body {
   font-family: var(--fonte-sans);
-  font-size: var(--tamanho-base);
+  font-size: var(--tamanho-md);
   line-height: 1.65;
   color: var(--cor-texto);
   background-color: var(--cor-branco);
