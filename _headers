@@ -13,16 +13,9 @@
 /js/*
   Cache-Control: public, max-age=300, must-revalidate
 
-# Bloqueios temporários: remover as regras X-Robots-Tag noindex após a aprovação jurídica.
+# Manter as URLs de preview do Cloudflare Pages fora do índice.
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
 
 https://:version.:project.pages.dev/*
-  X-Robots-Tag: noindex
-
-# Remover após a aprovação jurídica e antes de solicitar indexação.
-https://www.vivianbatistela.com.br/*
-  X-Robots-Tag: noindex
-
-https://vivianbatistela.com.br/*
   X-Robots-Tag: noindex
