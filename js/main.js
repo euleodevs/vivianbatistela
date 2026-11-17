@@ -164,7 +164,17 @@
         submenuToggle.addEventListener('click', toggleSubmenu);
       }
       if (submenuLink) {
-        submenuLink.addEventListener('click', toggleSubmenu);
+        const hasLocalAreasSection = submenuLink.getAttribute('href') === '#areas'
+          && document.getElementById('areas');
+
+        if (hasLocalAreasSection) {
+          submenuLink.addEventListener('click', () => {
+            updateSubmenuState(item, false);
+            if (isMobileNav()) closeMenu();
+          });
+        } else {
+          submenuLink.addEventListener('click', toggleSubmenu);
+        }
       }
     });
 
