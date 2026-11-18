@@ -71,6 +71,18 @@
   padding: 0;
 }
 
+/* Mantém a página atual visível enquanto a próxima página é preparada. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: ease-out;
+}
+
 html {
   font-size: 100%;
   scroll-behavior: smooth;
@@ -191,6 +203,12 @@ li {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms !important;
   }
 }
 

@@ -225,22 +225,14 @@
   gap: 1rem;
 }
 
-/* Entrada leve sem JavaScript pesado. */
+/* Entrada discreta sem ocultar o conteúdo durante a navegação. */
 .hero-animado .hero-content > *,
 .hero-animado-mobile .hero-content > * {
-  animation: hero-fade-up 0.65s ease-out both;
+  animation: hero-settle 0.2s ease-out both;
 }
 
-.hero-animado .hero-content > *:nth-child(2),
-.hero-animado-mobile .hero-content > *:nth-child(2) { animation-delay: 0.08s; }
-.hero-animado .hero-content > *:nth-child(3),
-.hero-animado-mobile .hero-content > *:nth-child(3) { animation-delay: 0.16s; }
-.hero-animado .hero-content > *:nth-child(4),
-.hero-animado-mobile .hero-content > *:nth-child(4) { animation-delay: 0.24s; }
-.hero-animado .hero-content > *:nth-child(5),
-.hero-animado-mobile .hero-content > *:nth-child(5) { animation-delay: 0.32s; }
-@keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(12px); }
+@keyframes hero-settle {
+  from { opacity: 1; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
