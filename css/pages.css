@@ -62,23 +62,6 @@
   box-shadow: 0 0 20px rgba(220, 163, 102, 0.28), inset 0 0 18px rgba(220, 163, 102, 0.06);
 }
 
-.hero-content::after {
-  content: '';
-  position: absolute;
-  top: -12px;
-  right: 1.25rem;
-  width: 6rem;
-  height: 1.5rem;
-  background: repeating-linear-gradient(
-    135deg,
-    transparent 0 8px,
-    rgba(245, 221, 196, 0.9) 8px 9px,
-    transparent 9px 17px
-  );
-  opacity: 0.72;
-  pointer-events: none;
-}
-
 .hero-tag {
   display: none !important;
   /* Ocultado temporariamente a pedido do cliente */
@@ -235,14 +218,12 @@
   from { opacity: 1; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .hero-animado .hero-content > *,
   .hero-animado-mobile .hero-content > * {
     animation: none;
   }
 }
-
 @media (max-width: 992px) {
   .hero-home {
     min-height: calc(100svh - 82px);
@@ -374,6 +355,10 @@
   gap: 4rem;
 }
 
+.sobre-introducao {
+  margin-bottom: 2rem;
+}
+
 .autoridade-foto-box {
   position: relative;
   border-radius: var(--raio-md);
@@ -417,6 +402,32 @@
   margin-top: 2px;
 }
 
+.autoridade-destaques {
+  margin-top: 1.25rem;
+}
+
+.autoridade-destaques-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.25rem;
+}
+
+.autoridade-destaques-grupo h4 {
+  color: var(--cor-azul);
+  font-size: var(--tamanho-md);
+  margin-bottom: 0.5rem;
+}
+
+.autoridade-destaques .autoridade-pontos {
+  margin: 0;
+  gap: 0.45rem;
+}
+
+.autoridade-pontos-trajetoria li {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 900px) {
   .grid-autoridade {
     grid-template-columns: 1fr;
@@ -446,7 +457,7 @@
 .curriculo-grid h3 {
   color: var(--cor-azul);
   font-size: var(--tamanho-lg);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .curriculo-lista {
@@ -460,9 +471,24 @@
   line-height: 1.55;
 }
 
+.curriculo-lista-trajetoria {
+  font-size: 1rem;
+}
+
+.curriculo-lista-trajetoria li {
+  margin-bottom: 0.45rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 700px) {
+  .autoridade-destaques-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .curriculo-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 

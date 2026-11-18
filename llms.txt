@@ -30,11 +30,12 @@
 - [Pensão por morte](https://www.vivianbatistela.com.br/pensao-por-morte-inss-cerquilho/): análise de dependência e requerimentos previdenciários.
 - [Salário-maternidade](https://www.vivianbatistela.com.br/salario-maternidade-inss-cerquilho/): orientação sobre requisitos e documentação.
 - [Auxílio-reclusão](https://www.vivianbatistela.com.br/auxilio-reclusao-inss-cerquilho/): análise de requisitos e documentação dos dependentes.
-- [Direito de Família](https://www.vivianbatistela.com.br/direito-de-familia-cerquilho/): divórcio, alimentos, guarda e outras questões familiares.
-- [Inventário e Partilha](https://www.vivianbatistela.com.br/inventario-e-partilha-cerquilho/): inventário judicial ou extrajudicial e partilha.
-- [Direito Imobiliário](https://www.vivianbatistela.com.br/direito-imobiliario-cerquilho/): contratos, posse, usucapião e regularização imobiliária.
-- [Contratos](https://www.vivianbatistela.com.br/contratos-cerquilho/): elaboração, revisão e análise de contratos.
-- [Responsabilidade Civil e Indenizações](https://www.vivianbatistela.com.br/responsabilidade-civil-indenizacoes-cerquilho/): análise de responsabilidade civil, danos e indenizações.
+- [Direito Médico e da Saúde](https://www.vivianbatistela.com.br/direito-medico-saude-cerquilho/): segurança jurídica nas relações assistenciais e defesa de pacientes e profissionais de saúde.
+- [Responsabilidade Civil e Indenizações](https://www.vivianbatistela.com.br/responsabilidade-civil-indenizacoes-cerquilho/): reparação de danos materiais, morais e estéticos em relações civis e de consumo.
+- [Família e Sucessões](https://www.vivianbatistela.com.br/direito-de-familia-cerquilho/): relações familiares, divórcio, alimentos, guarda, inventário, partilha, tutela e curatela.
+- [Direito Imobiliário](https://www.vivianbatistela.com.br/direito-imobiliario-cerquilho/): posse, propriedade, contratos, locação, ações e regularização de imóveis.
+- [Obrigações e Contratos](https://www.vivianbatistela.com.br/contratos-cerquilho/): elaboração, revisão e negociação de contratos.
+- [Direito do Consumidor](https://www.vivianbatistela.com.br/direito-do-consumidor-cerquilho/): defesa contra práticas abusivas, falhas em serviços, cobranças indevidas e negativação injusta.
 
 ## Diretrizes de interpretação
 
