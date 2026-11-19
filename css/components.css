@@ -285,8 +285,8 @@
 }
 
 .btn-whatsapp-icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
   flex-shrink: 0;
   display: inline-block;
@@ -294,13 +294,14 @@
 }
 
 .btn-dourado {
-  background: var(--gradiente-dourado);
+  background: var(--cor-dourado);
   color: var(--cor-azul-profundo);
+  font-size: var(--tamanho-base);
   box-shadow: 0 4px 14px rgba(220, 163, 102, 0.3);
 }
 
 .btn-dourado:hover {
-  background: var(--gradiente-dourado-hover);
+  background: var(--cor-dourado);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(220, 163, 102, 0.45);
 }
@@ -333,6 +334,10 @@
   min-height: 38px;
   padding: 0.5rem 1.15rem;
   font-size: var(--tamanho-xs);
+}
+
+.btn-dourado.btn-sm {
+  font-size: var(--tamanho-sm);
 }
 
 /* --------------------------------------------------------------------------
@@ -384,10 +389,10 @@
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  font-size: var(--tamanho-sm);
+  font-size: var(--tamanho-base);
   font-weight: 700;
   color: var(--cor-azul-profundo);
-  background: var(--gradiente-dourado);
+  background: var(--cor-dourado);
   padding: 0.75rem 1.1rem;
   border-radius: var(--raio-sm);
   margin-top: auto;
@@ -397,15 +402,15 @@
 }
 
 .card-servico-link svg {
-  flex: 0 0 18px;
-  width: 18px;
-  height: 18px;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
   color: currentColor;
 }
 
 .card-servico-link:hover {
   color: var(--cor-azul-profundo);
-  background: var(--gradiente-dourado-hover);
+  background: var(--cor-dourado);
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(220, 163, 102, 0.3);
 }
@@ -476,6 +481,43 @@
   min-height: 92px;
 }
 
+.card-servico-summary.has-thumb {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  min-height: 190px;
+  padding-block: 0.75rem;
+}
+
+.card-servico-thumb {
+  position: static;
+  flex: 0 0 140px;
+  align-self: stretch;
+  width: 140px;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--raio-sm);
+}
+
+.card-servico-summary-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.card-servico-expandivel[open] .card-servico-thumb {
+  display: none;
+}
+
+.card-servico-summary.has-thumb .card-servico-chevron {
+  flex: 0 0 2.25rem;
+  align-self: flex-start;
+  margin-left: auto;
+}
+
 .card-servico-summary::-webkit-details-marker {
   display: none;
 }
@@ -507,7 +549,7 @@
   line-height: 1.5;
   transition: opacity 0.16s ease, transform 0.16s ease;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .card-servico-expandivel[open] .card-servico-preview {
@@ -577,6 +619,17 @@
 @media (max-width: 520px) {
   .card-servico-summary {
     padding: 1.1rem 1rem;
+  }
+
+  .card-servico-summary.has-thumb {
+    gap: 0.75rem;
+    min-height: 162px;
+    padding-block: 0.65rem;
+  }
+
+  .card-servico-thumb {
+    flex-basis: 110px;
+    width: 110px;
   }
 
   .card-servico-details {
@@ -719,14 +772,14 @@
   bottom: 2rem;
   right: 2rem;
   z-index: 999;
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradiente-dourado);
+  background: var(--cor-dourado);
   color: var(--cor-azul-profundo);
   box-shadow: 0 6px 20px rgba(220, 163, 102, 0.4);
   opacity: 0;
@@ -745,13 +798,13 @@
 }
 
 .whatsapp-float svg {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   fill: currentColor;
 }
 
 .whatsapp-float:hover {
-  background: var(--gradiente-dourado-hover);
+  background: var(--cor-dourado);
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 10px 25px rgba(220, 163, 102, 0.55);
   color: var(--cor-azul-profundo);
@@ -765,13 +818,21 @@
   .whatsapp-float {
     bottom: 1.25rem;
     right: 1.25rem;
-    width: 52px;
-    height: 52px;
+    width: 58px;
+    height: 58px;
   }
   .whatsapp-float svg {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
   }
+}
+
+/* Destaque dourado apenas nos títulos das especialidades */
+.especialidade-heading h3 {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  background: var(--cor-dourado);
+  border-radius: var(--raio-sm);
 }
 
 /* --------------------------------------------------------------------------
