@@ -8,8 +8,8 @@
 .hero-home {
   position: relative;
   background: var(--gradiente-hero-azul);
-  background-image: url('../assets/images/banner.webp');
-  background-position: center;
+  background-image: url('../assets/images/hero-vivian.jpg');
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--cor-branco);
@@ -31,9 +31,9 @@
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(18, 29, 44, 0.94) 0%,
-    rgba(18, 29, 44, 0.86) 40%,
-    rgba(18, 29, 44, 0.34) 100%
+    rgba(18, 29, 44, 0.90) 0%,
+    rgba(18, 29, 44, 0.72) 40%,
+    rgba(18, 29, 44, 0.14) 100%
   );
   pointer-events: none;
   z-index: 0;
@@ -273,14 +273,14 @@
   .hero-home::before {
     background: linear-gradient(
       180deg,
-      rgba(18, 29, 44, 0.84) 0%,
-      rgba(18, 29, 44, 0.80) 55%,
-      rgba(18, 29, 44, 0.74) 100%
+      rgba(18, 29, 44, 0.76) 0%,
+      rgba(18, 29, 44, 0.70) 55%,
+      rgba(18, 29, 44, 0.62) 100%
     );
   }
 
   .hero-home {
-    background-position: 62% center;
+    background-position: 78% top;
     contain: layout;
   }
 
@@ -396,6 +396,7 @@
   gap: 1.25rem;
 }
 
+.autoridade-destaques-grupo h3,
 .autoridade-destaques-grupo h4 {
   color: var(--cor-azul);
   font-size: var(--tamanho-md);
@@ -416,6 +417,53 @@
   .grid-autoridade {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+}
+
+.autoridade-curriculo-card {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-card);
+}
+
+.autoridade-curriculo-card .autoridade-destaques {
+  margin-top: 0;
+}
+
+.autoridade-curriculo-card .autoridade-destaques-grid {
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.autoridade-curriculo-card .autoridade-pontos {
+  margin: 0;
+  gap: 0.65rem;
+}
+
+.autoridade-curriculo-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.autoridade-curriculo-acoes .btn {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .autoridade-curriculo-card {
+    padding: 1.1rem;
+  }
+
+  .autoridade-curriculo-acoes {
+    flex-direction: column;
   }
 }
 
@@ -495,12 +543,12 @@
 
 .servico-hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(11rem, 15rem);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "breadcrumb image"
-    "title image";
-  align-items: center;
-  column-gap: clamp(2rem, 5vw, 4rem);
+    "breadcrumb"
+    "title";
+  align-items: start;
+  row-gap: 0.5rem;
 }
 
 .servico-hero-layout .breadcrumb {
@@ -511,25 +559,6 @@
 .servico-hero-layout h1 {
   grid-area: title;
   align-self: start;
-}
-
-.servico-hero-image {
-  grid-area: image;
-  width: min(100%, 15rem);
-  justify-self: end;
-  overflow: hidden;
-  margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--raio-md);
-  box-shadow: 0 14px 30px rgba(9, 18, 35, 0.22);
-}
-
-.servico-hero-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 409 / 480;
-  object-fit: cover;
 }
 
 .breadcrumb {
@@ -554,6 +583,23 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3.5rem;
+}
+
+.contato-mapa {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.contato-mapa h2 {
+  margin-bottom: 1rem;
+}
+
+.contato-mapa iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: var(--raio-md);
 }
 
 .servico-conteudo {
@@ -622,6 +668,7 @@
 }
 
 /* Destaque dourado apenas nos títulos do perfil profissional */
+.autoridade-destaques-grupo h3,
 .autoridade-destaques-grupo h4 {
   display: inline-block;
   padding: 0.3rem 0.6rem;
@@ -646,18 +693,8 @@
 }
 
 @media (max-width: 640px) {
-  .servico-hero-layout {
-    grid-template-columns: minmax(0, 1fr) 6.5rem;
-    grid-template-areas:
-      "breadcrumb breadcrumb"
-      "title title"
-      "image .";
-    row-gap: 0.75rem;
-    column-gap: 1rem;
-  }
-
-  .servico-hero-image {
-    width: min(48vw, 11rem);
-    justify-self: start;
+  .contato-mapa iframe {
+    height: 360px;
   }
 }
+
