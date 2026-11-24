@@ -698,3 +698,327 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Faixa de Assinatura Institucional abaixo do Hero (Print 1)
+   -------------------------------------------------------------------------- */
+.hero-assinatura-bar {
+  background: var(--cor-azul-profundo);
+  color: var(--cor-dourado-claro);
+  border-bottom: 1px solid rgba(220, 163, 102, 0.35);
+  padding: 0.95rem 0;
+  text-align: center;
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+.hero-assinatura-bar strong {
+  color: var(--cor-branco);
+  font-family: var(--fonte-serif);
+  font-weight: 700;
+}
+
+.hero-assinatura-sep {
+  color: var(--cor-dourado);
+  margin: 0 0.45rem;
+}
+
+/* --------------------------------------------------------------------------
+   Ícone Circular Padrão (Nossa Abordagem, Passos da Consulta e Contato)
+   -------------------------------------------------------------------------- */
+.icone-circulo {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  border-radius: 50%;
+  background: var(--cor-azul);
+  border: 1px solid rgba(220, 163, 102, 0.55);
+  color: var(--cor-dourado-claro);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 54, 80, 0.14);
+}
+
+.icone-circulo svg {
+  width: 23px;
+  height: 23px;
+}
+
+/* --------------------------------------------------------------------------
+   Seção Nossa Abordagem (Print 3)
+   -------------------------------------------------------------------------- */
+.abordagem-intro {
+  max-width: 780px;
+  margin: -1.5rem auto 2.75rem;
+  text-align: center;
+  color: var(--cor-texto-suave);
+  font-size: var(--tamanho-md);
+  line-height: 1.7;
+}
+
+.abordagem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.abordagem-card {
+  background: var(--cor-gelo);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: 1.65rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  box-shadow: var(--sombra-card);
+  transition: var(--transicao-suave);
+}
+
+.abordagem-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--cor-borda-dourada);
+  box-shadow: var(--sombra-card-hover);
+}
+
+.abordagem-card-body h3 {
+  font-family: var(--fonte-serif);
+  font-size: var(--tamanho-lg);
+  color: var(--cor-azul);
+  margin: 0 0 0.45rem;
+}
+
+.abordagem-card-body p {
+  font-size: var(--tamanho-base);
+  color: var(--cor-texto-suave);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .abordagem-grid {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Seção Como Funciona a Consulta — 4 Passos (Prints 4 e 5)
+   -------------------------------------------------------------------------- */
+.passos-consulta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.passo-consulta-card {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-lg);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--sombra-card);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transicao-suave);
+}
+
+.passo-consulta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-card-hover);
+  border-color: var(--cor-borda-dourada);
+}
+
+.passo-consulta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.passo-numero {
+  font-family: var(--fonte-serif);
+  font-size: 2.35rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(37, 54, 80, 0.14);
+  user-select: none;
+}
+
+.passo-consulta-card h3 {
+  font-family: var(--fonte-serif);
+  font-size: 1.25rem;
+  color: var(--cor-azul);
+  margin: 0 0 0.6rem;
+}
+
+.passo-consulta-card p {
+  font-size: var(--tamanho-base);
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1080px) {
+  .passos-consulta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .passos-consulta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Seção Fale Conosco / Agende sua Consulta (Prints 6 e 7)
+   -------------------------------------------------------------------------- */
+.fale-conosco-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.canais-contato-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.canal-contato-card {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: 1.6rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sombra-card);
+  text-decoration: none;
+  transition: var(--transicao-suave);
+  min-width: 0;
+}
+
+.canal-contato-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cor-dourado);
+  box-shadow: var(--sombra-card-hover);
+}
+
+.canal-contato-card .icone-circulo {
+  margin-bottom: 0.9rem;
+}
+
+.canal-contato-card h3 {
+  font-family: var(--fonte-serif);
+  font-size: 1.125rem;
+  color: var(--cor-azul);
+  margin: 0 0 0.35rem;
+}
+
+.canal-contato-valor {
+  font-size: 0.9375rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.localizacao-mapa-card {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.localizacao-info-box {
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.localizacao-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.localizacao-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.localizacao-item-copy h3 {
+  font-family: var(--fonte-serif);
+  font-size: 1.25rem;
+  color: var(--cor-azul);
+  margin: 0 0 0.25rem;
+}
+
+.localizacao-item-copy p {
+  font-size: var(--tamanho-base);
+  color: var(--cor-texto-suave);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.localizacao-item-copy strong {
+  color: var(--cor-texto);
+}
+
+.localizacao-info-box .btn {
+  width: 100%;
+  border-radius: var(--raio-pill);
+}
+
+.localizacao-cta-nota {
+  font-size: var(--tamanho-sm);
+  color: var(--cor-texto-suave);
+  margin: 0.75rem 0 0;
+  text-align: center;
+}
+
+.localizacao-mapa-embed {
+  flex: 1 1 auto;
+  min-height: 290px;
+  border-top: 1px solid var(--cor-borda);
+  display: flex;
+}
+
+.localizacao-mapa-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 290px;
+  border: 0;
+}
+
+@media (max-width: 960px) {
+  .fale-conosco-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .canais-contato-grid {
+    gap: 0.85rem;
+  }
+
+  .canal-contato-card {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .canal-contato-valor {
+    font-size: 0.85rem;
+  }
+}
+
