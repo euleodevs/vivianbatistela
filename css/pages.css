@@ -699,326 +699,222 @@
 }
 
 /* --------------------------------------------------------------------------
-   Faixa de Assinatura Institucional abaixo do Hero (Print 1)
+   Diretrizes de Atuação e Etapas do Atendimento (Padrão Visual Nativo)
    -------------------------------------------------------------------------- */
-.hero-assinatura-bar {
-  background: var(--cor-azul-profundo);
-  color: var(--cor-dourado-claro);
-  border-bottom: 1px solid rgba(220, 163, 102, 0.35);
-  padding: 0.95rem 0;
-  text-align: center;
-  font-size: clamp(0.875rem, 1.4vw, 1rem);
-  line-height: 1.45;
-  letter-spacing: 0.02em;
-}
-
-.hero-assinatura-bar strong {
-  color: var(--cor-branco);
-  font-family: var(--fonte-serif);
-  font-weight: 700;
-}
-
-.hero-assinatura-sep {
-  color: var(--cor-dourado);
-  margin: 0 0.45rem;
-}
-
-/* --------------------------------------------------------------------------
-   Ícone Circular Padrão (Nossa Abordagem, Passos da Consulta e Contato)
-   -------------------------------------------------------------------------- */
-.icone-circulo {
-  width: 50px;
-  height: 50px;
-  flex: 0 0 50px;
-  border-radius: 50%;
-  background: var(--cor-azul);
-  border: 1px solid rgba(220, 163, 102, 0.55);
-  color: var(--cor-dourado-claro);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(37, 54, 80, 0.14);
-}
-
-.icone-circulo svg {
-  width: 23px;
-  height: 23px;
-}
-
-/* --------------------------------------------------------------------------
-   Seção Nossa Abordagem (Print 3)
-   -------------------------------------------------------------------------- */
-.abordagem-intro {
-  max-width: 780px;
-  margin: -1.5rem auto 2.75rem;
-  text-align: center;
-  color: var(--cor-texto-suave);
-  font-size: var(--tamanho-md);
-  line-height: 1.7;
-}
-
-.abordagem-grid {
+.diretrizes-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
-.abordagem-card {
-  background: var(--cor-gelo);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-lg);
-  padding: 1.65rem 1.5rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.15rem;
-  box-shadow: var(--sombra-card);
-  transition: var(--transicao-suave);
-}
-
-.abordagem-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--cor-borda-dourada);
-  box-shadow: var(--sombra-card-hover);
-}
-
-.abordagem-card-body h3 {
-  font-family: var(--fonte-serif);
-  font-size: var(--tamanho-lg);
-  color: var(--cor-azul);
-  margin: 0 0 0.45rem;
-}
-
-.abordagem-card-body p {
-  font-size: var(--tamanho-base);
-  color: var(--cor-texto-suave);
-  line-height: 1.55;
-  margin: 0;
-}
-
-@media (max-width: 960px) {
-  .abordagem-grid {
-    grid-template-columns: 1fr;
-    max-width: 620px;
-    margin: 0 auto;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Seção Como Funciona a Consulta — 4 Passos (Prints 4 e 5)
-   -------------------------------------------------------------------------- */
-.passos-consulta-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.passo-consulta-card {
+.diretriz-card {
   background: var(--cor-branco);
   border: 1px solid var(--cor-borda);
   border-top: 3px solid var(--cor-dourado);
-  border-radius: var(--raio-lg);
-  padding: 1.75rem 1.5rem;
+  border-radius: var(--raio-md);
+  padding: 1.75rem 1.6rem;
   box-shadow: var(--sombra-card);
   display: flex;
   flex-direction: column;
   transition: var(--transicao-suave);
 }
 
-.passo-consulta-card:hover {
-  transform: translateY(-4px);
+.diretriz-card:hover {
+  border-color: rgba(185, 132, 76, 0.6);
   box-shadow: var(--sombra-card-hover);
-  border-color: var(--cor-borda-dourada);
 }
 
-.passo-consulta-top {
+.diretriz-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
 }
 
-.passo-numero {
-  font-family: var(--fonte-serif);
-  font-size: 2.35rem;
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(37, 54, 80, 0.14);
-  user-select: none;
+.diretriz-card-header .icon-sidebar {
+  width: 22px;
+  height: 22px;
+  margin: 0;
 }
 
-.passo-consulta-card h3 {
+.diretriz-card-header h3 {
   font-family: var(--fonte-serif);
-  font-size: 1.25rem;
+  font-size: var(--tamanho-lg);
   color: var(--cor-azul);
-  margin: 0 0 0.6rem;
+  margin: 0;
 }
 
-.passo-consulta-card p {
+.diretriz-card p {
   font-size: var(--tamanho-base);
   color: var(--cor-texto-suave);
   line-height: 1.6;
   margin: 0;
 }
 
-@media (max-width: 1080px) {
-  .passos-consulta-grid {
+.etapas-atendimento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.etapa-card {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-md);
+  padding: 1.65rem 1.45rem;
+  box-shadow: var(--sombra-card);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transicao-suave);
+}
+
+.etapa-card:hover {
+  border-color: rgba(185, 132, 76, 0.6);
+  box-shadow: var(--sombra-card-hover);
+}
+
+.etapa-card-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.etapa-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  background: var(--cor-dourado);
+  color: var(--cor-azul-profundo);
+  font-family: var(--fonte-serif);
+  font-size: var(--tamanho-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--raio-sm);
+}
+
+.etapa-card-topo .icon-sidebar {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.etapa-card h3 {
+  font-family: var(--fonte-serif);
+  font-size: 1.1875rem;
+  color: var(--cor-azul);
+  margin: 0 0 0.55rem;
+}
+
+.etapa-card p {
+  font-size: var(--tamanho-base);
+  color: var(--cor-texto-suave);
+  line-height: 1.58;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .diretrizes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .etapas-atendimento-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 620px) {
-  .passos-consulta-grid {
+  .etapas-atendimento-grid {
     grid-template-columns: 1fr;
   }
 }
 
 /* --------------------------------------------------------------------------
-   Seção Fale Conosco / Agende sua Consulta (Prints 6 e 7)
+   Seção de Contato e Localização na Página Inicial (Padrão Visual Nativo)
    -------------------------------------------------------------------------- */
-.fale-conosco-layout {
+.home-contato-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: stretch;
 }
 
-.canais-contato-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.15rem;
-}
-
-.canal-contato-card {
-  background: var(--cor-branco);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-lg);
-  padding: 1.6rem 1rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--sombra-card);
-  text-decoration: none;
-  transition: var(--transicao-suave);
-  min-width: 0;
-}
-
-.canal-contato-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--cor-dourado);
-  box-shadow: var(--sombra-card-hover);
-}
-
-.canal-contato-card .icone-circulo {
-  margin-bottom: 0.9rem;
-}
-
-.canal-contato-card h3 {
-  font-family: var(--fonte-serif);
-  font-size: 1.125rem;
-  color: var(--cor-azul);
-  margin: 0 0 0.35rem;
-}
-
-.canal-contato-valor {
-  font-size: 0.9375rem;
-  color: var(--cor-texto-suave);
-  line-height: 1.4;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
-.localizacao-mapa-card {
+.home-contato-card {
   background: var(--cor-branco);
   border: 1px solid var(--cor-borda);
   border-top: 3px solid var(--cor-dourado);
-  border-radius: var(--raio-lg);
+  border-radius: var(--raio-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
   box-shadow: var(--sombra-card);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.localizacao-info-box {
-  padding: clamp(1.5rem, 3vw, 2rem);
+.home-contato-card h3 {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.3rem 0.65rem;
+  background: var(--cor-dourado);
+  color: var(--cor-azul);
+  font-size: var(--tamanho-md);
+  border-radius: var(--raio-sm);
+  margin-bottom: 1rem;
 }
 
-.localizacao-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
+.home-contato-intro {
+  color: var(--cor-texto-suave);
+  font-size: var(--tamanho-base);
+  line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
-.localizacao-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+.home-contato-card .office-contact-list {
+  margin-bottom: 1.75rem;
+  gap: 0.95rem;
 }
 
-.localizacao-item-copy h3 {
-  font-family: var(--fonte-serif);
-  font-size: 1.25rem;
+.home-contato-card .office-contact-item a {
   color: var(--cor-azul);
-  margin: 0 0 0.25rem;
+  font-weight: 700;
 }
 
-.localizacao-item-copy p {
-  font-size: var(--tamanho-base);
-  color: var(--cor-texto-suave);
-  line-height: 1.5;
-  margin: 0;
+.home-contato-card .office-contact-item a:hover {
+  color: var(--cor-dourado-escuro);
 }
 
-.localizacao-item-copy strong {
-  color: var(--cor-texto);
-}
-
-.localizacao-info-box .btn {
+.home-contato-card .btn {
   width: 100%;
-  border-radius: var(--raio-pill);
+  margin-top: auto;
 }
 
-.localizacao-cta-nota {
-  font-size: var(--tamanho-sm);
-  color: var(--cor-texto-suave);
-  margin: 0.75rem 0 0;
-  text-align: center;
-}
-
-.localizacao-mapa-embed {
-  flex: 1 1 auto;
-  min-height: 290px;
-  border-top: 1px solid var(--cor-borda);
+.home-contato-mapa {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+  min-height: 440px;
   display: flex;
 }
 
-.localizacao-mapa-embed iframe {
+.home-contato-mapa iframe {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 290px;
+  min-height: 440px;
   border: 0;
 }
 
-@media (max-width: 960px) {
-  .fale-conosco-layout {
+@media (max-width: 900px) {
+  .home-contato-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 420px) {
-  .canais-contato-grid {
-    gap: 0.85rem;
-  }
-
-  .canal-contato-card {
-    padding: 1.25rem 0.75rem;
-  }
-
-  .canal-contato-valor {
-    font-size: 0.85rem;
+  .home-contato-mapa,
+  .home-contato-mapa iframe {
+    min-height: 360px;
   }
 }
 

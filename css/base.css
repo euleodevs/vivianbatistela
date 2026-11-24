@@ -272,19 +272,11 @@ li {
   border-radius: var(--raio-pill);
 }
 
-.texto-destaque-dourado {
-  color: var(--cor-dourado-escuro);
-}
-
-.secao-azul .texto-destaque-dourado {
-  color: var(--cor-dourado);
-}
-
 .secao-subtitulo {
   color: var(--cor-texto-suave);
   font-size: var(--tamanho-md);
   line-height: 1.65;
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
