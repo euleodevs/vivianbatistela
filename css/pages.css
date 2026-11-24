@@ -835,9 +835,85 @@
    -------------------------------------------------------------------------- */
 .home-contato-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+  gap: clamp(1.5rem, 3vw, 2.25rem);
   align-items: stretch;
+}
+
+.home-canais-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.home-canais-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.home-canal-card {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-top: 3px solid var(--cor-dourado);
+  border-radius: var(--raio-md);
+  padding: 1.35rem 1rem;
+  box-shadow: var(--sombra-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transicao-suave);
+  min-width: 0;
+}
+
+.home-canal-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(185, 132, 76, 0.65);
+  box-shadow: var(--sombra-card-hover);
+}
+
+.home-canal-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--raio-sm);
+  background: rgba(220, 163, 102, 0.14);
+  border: 1px solid var(--cor-borda-dourada);
+  color: var(--cor-dourado-escuro);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  transition: var(--transicao-suave);
+}
+
+.home-canal-card:hover .home-canal-icone {
+  background: var(--cor-dourado);
+  color: var(--cor-azul-profundo);
+  border-color: var(--cor-dourado);
+}
+
+.home-canal-icone svg {
+  width: 21px;
+  height: 21px;
+}
+
+.home-canal-card h3 {
+  font-family: var(--fonte-serif);
+  font-size: 1.125rem;
+  color: var(--cor-azul);
+  margin: 0 0 0.25rem;
+}
+
+.home-canal-valor {
+  font-size: var(--tamanho-sm);
+  color: var(--cor-texto-suave);
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .home-contato-card {
@@ -845,7 +921,7 @@
   border: 1px solid var(--cor-borda);
   border-top: 3px solid var(--cor-dourado);
   border-radius: var(--raio-md);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  padding: clamp(1.35rem, 2.5vw, 1.75rem);
   box-shadow: var(--sombra-card);
   display: flex;
   flex-direction: column;
@@ -862,25 +938,9 @@
   margin-bottom: 1rem;
 }
 
-.home-contato-intro {
-  color: var(--cor-texto-suave);
-  font-size: var(--tamanho-base);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
 .home-contato-card .office-contact-list {
-  margin-bottom: 1.75rem;
-  gap: 0.95rem;
-}
-
-.home-contato-card .office-contact-item a {
-  color: var(--cor-azul);
-  font-weight: 700;
-}
-
-.home-contato-card .office-contact-item a:hover {
-  color: var(--cor-dourado-escuro);
+  margin-bottom: 1.35rem;
+  gap: 0.85rem;
 }
 
 .home-contato-card .btn {
@@ -915,6 +975,20 @@
   .home-contato-mapa,
   .home-contato-mapa iframe {
     min-height: 360px;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-canais-grid {
+    gap: 0.75rem;
+  }
+
+  .home-canal-card {
+    padding: 1.15rem 0.65rem;
+  }
+
+  .home-canal-valor {
+    font-size: 0.8125rem;
   }
 }
 
