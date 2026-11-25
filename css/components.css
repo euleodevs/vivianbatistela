@@ -443,7 +443,7 @@
 }
 
 .especialidade-heading h3 {
-  color: var(--cor-azul);
+  color: var(--cor-dourado);
   font-family: var(--fonte-serif);
   font-size: clamp(1.35rem, 2vw, 1.65rem);
   line-height: 1.2;
@@ -660,7 +660,7 @@
 }
 
 .especialidade-heading h3 {
-  color: var(--cor-azul);
+  color: var(--cor-dourado);
   font-family: var(--fonte-serif);
   font-size: clamp(1.35rem, 2vw, 1.65rem);
   line-height: 1.2;
@@ -827,11 +827,12 @@
   }
 }
 
-/* Destaque dourado apenas nos títulos das especialidades */
+/* Destaque azul com texto dourado nos títulos das especialidades */
 .especialidade-heading h3 {
   display: inline-block;
   padding: 0.35rem 0.7rem;
-  background: var(--cor-dourado);
+  background: var(--cor-azul);
+  color: var(--cor-dourado);
   border-radius: var(--raio-sm);
 }
 
