@@ -284,13 +284,17 @@
   line-height: 1.2;
 }
 
-.btn-whatsapp-icon {
+.btn-whatsapp-icon,
+.btn-icon {
   width: 20px;
   height: 20px;
-  fill: currentColor;
   flex-shrink: 0;
   display: inline-block;
   vertical-align: middle;
+}
+
+.btn-whatsapp-icon {
+  fill: currentColor;
 }
 
 .btn-dourado {
@@ -310,6 +314,7 @@
   background-color: transparent;
   border-color: var(--cor-dourado);
   color: var(--cor-dourado);
+  font-size: var(--tamanho-base);
 }
 
 .btn-outline-dourado:hover {

@@ -574,3 +574,27 @@
 
   document.documentElement.classList.add('js-loaded');
 })();
+
+/* Vídeo da fachada: reproduz automaticamente (mudo) quando a seção fica visível */
+(function () {
+  const video = document.querySelector('.home-contato-video video');
+  if (!video) return;
+  video.muted = true;
+
+  if (!('IntersectionObserver' in window)) {
+    video.play().catch(() => {});
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  observer.observe(video);
+})();
