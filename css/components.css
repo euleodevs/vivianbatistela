@@ -1068,7 +1068,7 @@ html.modal-travado {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.75rem;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -1083,9 +1083,9 @@ html.modal-travado {
   background: var(--cor-branco);
   color: var(--cor-texto);
   width: 100%;
-  max-width: 560px;
-  max-height: calc(100vh - 2rem);
-  max-height: calc(100dvh - 2rem);
+  max-width: 620px;
+  max-height: calc(100vh - 1.5rem);
+  max-height: calc(100dvh - 1.5rem);
   border-radius: var(--raio-md);
   border-top: 4px solid var(--cor-dourado);
   box-shadow: 0 24px 48px rgba(18, 27, 41, 0.35);
@@ -1103,7 +1103,7 @@ html.modal-travado {
 .modal-alerta-header {
   background: var(--gradiente-hero-azul);
   color: var(--cor-branco);
-  padding: 1.4rem 3.25rem 1.3rem 1.75rem;
+  padding: 1rem 3rem 0.95rem 1.5rem;
   position: relative;
   text-align: center;
   border-bottom: 1px solid rgba(220, 163, 102, 0.28);
@@ -1141,76 +1141,76 @@ html.modal-travado {
 .modal-alerta-title {
   color: var(--cor-branco);
   font-family: var(--fonte-serif);
-  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.55rem);
   letter-spacing: 0.02em;
   margin: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .modal-alerta-simbolo {
-  height: 32px;
+  height: 28px;
   width: auto;
   flex-shrink: 0;
   display: block;
 }
 
 .modal-alerta-body {
-  padding: 1.5rem 1.75rem 1.65rem;
+  padding: 1.15rem 1.5rem 1.25rem;
 }
 
 .modal-alerta-intro {
-  font-size: var(--tamanho-base);
-  line-height: 1.55;
+  font-size: 0.95rem;
+  line-height: 1.45;
   color: var(--cor-texto);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .modal-alerta-lista {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.45rem;
 }
 
 .modal-alerta-lista li {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.65rem;
   margin: 0;
-  padding: 0.65rem 0.85rem;
+  padding: 0.5rem 0.75rem;
   background: var(--cor-gelo);
   border-left: 3px solid var(--cor-dourado);
   border-radius: 0 var(--raio-sm) var(--raio-sm) 0;
-  font-size: 0.9375rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.38;
   color: var(--cor-texto);
 }
 
 .modal-alerta-lista li svg {
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
   color: var(--cor-dourado-escuro);
-  flex: 0 0 20px;
+  flex: 0 0 19px;
 }
 
 .modal-alerta-duvida {
-  font-size: var(--tamanho-base);
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--cor-azul);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .modal-alerta-contato {
   background: linear-gradient(180deg, #FAF8F5 0%, #F3ECE2 100%);
   border: 1px solid var(--cor-borda-dourada);
   border-radius: var(--raio-md);
-  padding: 0.9rem 1.1rem;
+  padding: 0.7rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1252,19 +1252,44 @@ html.modal-travado {
   flex-shrink: 0;
 }
 
-@media (max-width: 540px) {
+@media (max-height: 680px) {
   .modal-alerta-header {
-    padding: 1.25rem 3rem 1.15rem 1.15rem;
-  }
-  .modal-alerta-simbolo {
-    height: 26px;
+    padding: 0.85rem 3rem 0.8rem 1.25rem;
   }
   .modal-alerta-body {
-    padding: 1.2rem 1.25rem 1.35rem;
+    padding: 0.95rem 1.25rem 1rem;
+  }
+  .modal-alerta-intro {
+    margin-bottom: 0.6rem;
+  }
+  .modal-alerta-lista {
+    gap: 0.35rem;
+    margin-bottom: 0.65rem;
+  }
+  .modal-alerta-lista li {
+    padding: 0.42rem 0.7rem;
+  }
+  .modal-alerta-duvida {
+    margin-bottom: 0.6rem;
+  }
+  .modal-alerta-contato {
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .modal-alerta-header {
+    padding: 1rem 3rem 0.9rem 1.15rem;
+  }
+  .modal-alerta-simbolo {
+    height: 24px;
+  }
+  .modal-alerta-body {
+    padding: 1rem 1.1rem 1.1rem;
   }
   .modal-alerta-lista li {
     font-size: var(--tamanho-sm);
-    padding: 0.55rem 0.7rem;
+    padding: 0.5rem 0.65rem;
   }
 }
 

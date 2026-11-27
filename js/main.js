@@ -447,38 +447,19 @@
     handleWppVisibility();
   }
 
-  // 6. Popup de Comunicado Importante / Alerta de Golpe (exibição única por visitante)
-  const ALERTA_GOLPE_KEY = 'vb_alerta_golpe_v2';
-  const hasSeenAlertaGolpe = () => {
-    try {
-      if (window.localStorage && window.localStorage.getItem(ALERTA_GOLPE_KEY) === '1') return true;
-    } catch (_) {}
-    try {
-      if (window.sessionStorage && window.sessionStorage.getItem(ALERTA_GOLPE_KEY) === '1') return true;
-    } catch (_) {}
-    return false;
-  };
-
-  const markAlertaGolpeSeen = () => {
-    try {
-      if (window.localStorage) window.localStorage.setItem(ALERTA_GOLPE_KEY, '1');
-    } catch (_) {}
-    try {
-      if (window.sessionStorage) window.sessionStorage.setItem(ALERTA_GOLPE_KEY, '1');
-    } catch (_) {}
-  };
-
+  // 6. Popup de Comunicado Importante / Alerta de Golpe (exibe após 3s ao acessar ou atualizar)
   const isNotFoundPage = document.title.includes('Página Não Encontrada') || window.location.pathname.endsWith('/404.html');
 
-  if (!isNotFoundPage && !hasSeenAlertaGolpe()) {
-    const overlay = document.createElement('div');
-    overlay.className = 'modal-alerta-overlay';
-    overlay.setAttribute('role', 'dialog');
-    overlay.setAttribute('aria-modal', 'true');
-    overlay.setAttribute('aria-labelledby', 'modal-alerta-titulo');
-    overlay.setAttribute('aria-describedby', 'modal-alerta-descricao');
+  if (!isNotFoundPage) {
+    const showAlertaModal = () => {
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-alerta-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-labelledby', 'modal-alerta-titulo');
+      overlay.setAttribute('aria-describedby', 'modal-alerta-descricao');
 
-    overlay.innerHTML = `
+      overlay.innerHTML = `
       <div class="modal-alerta" tabindex="-1">
         <div class="modal-alerta-header">
           <button type="button" class="modal-alerta-close" data-close-alerta aria-label="Fechar alerta de golpe">
@@ -526,48 +507,50 @@
       </div>
     `;
 
-    const previousFocus = document.activeElement;
-    let isClosing = false;
+      const previousFocus = document.activeElement;
+      let isClosing = false;
 
-    const closeAlertaModal = () => {
-      if (isClosing) return;
-      isClosing = true;
-      markAlertaGolpeSeen();
-      overlay.classList.remove('visivel');
-      document.documentElement.classList.remove('modal-travado');
-      document.removeEventListener('keydown', handleKeydown);
-      window.setTimeout(() => {
-        overlay.remove();
-        if (previousFocus && typeof previousFocus.focus === 'function') {
-          previousFocus.focus();
+      const closeAlertaModal = () => {
+        if (isClosing) return;
+        isClosing = true;
+        overlay.classList.remove('visivel');
+        document.documentElement.classList.remove('modal-travado');
+        document.removeEventListener('keydown', handleKeydown);
+        window.setTimeout(() => {
+          overlay.remove();
+          if (previousFocus && typeof previousFocus.focus === 'function') {
+            previousFocus.focus();
+          }
+        }, 260);
+      };
+
+      const handleKeydown = (event) => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeAlertaModal();
         }
-      }, 260);
-    };
+      };
 
-    const handleKeydown = (event) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        closeAlertaModal();
-      }
-    };
-
-    overlay.addEventListener('click', (event) => {
-      if (event.target === overlay || event.target.closest('[data-close-alerta]')) {
-        closeAlertaModal();
-      }
-    });
-
-    document.body.appendChild(overlay);
-    document.documentElement.classList.add('modal-travado');
-    document.addEventListener('keydown', handleKeydown);
-
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        overlay.classList.add('visivel');
-        const closeBtn = overlay.querySelector('.modal-alerta-close');
-        if (closeBtn) closeBtn.focus();
+      overlay.addEventListener('click', (event) => {
+        if (event.target === overlay || event.target.closest('[data-close-alerta]')) {
+          closeAlertaModal();
+        }
       });
-    });
+
+      document.body.appendChild(overlay);
+      document.documentElement.classList.add('modal-travado');
+      document.addEventListener('keydown', handleKeydown);
+
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          overlay.classList.add('visivel');
+          const closeBtn = overlay.querySelector('.modal-alerta-close');
+          if (closeBtn) closeBtn.focus();
+        });
+      });
+    };
+
+    window.setTimeout(showAlertaModal, 3000);
   }
 
   document.documentElement.classList.add('js-loaded');
